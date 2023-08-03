@@ -3,12 +3,9 @@ const TelegramBot = require('node-telegram-bot-api');
 //импорт токена из файла, который нельзя выгружать
 import token from "./token_info";
 //импорт фуекции чтения из файла
-import ReadTxtFromFile from "./functions";
-//импорт названия файла из файла с основными константами
-import txtfilename1 from "./important_values";
-import txtfilename2 from "./important_values";
-//импорт команд для бота из ...
-import commands from "./important_values";
+import {ReadTxtFromFile, WriteTxtfromFile} from "./functions";
+//импорт названия файла и команд боту из файла с основными константами
+import {txtfilename1,txtfilename2, commands } from "./important_values";
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: {interval:300, autoStart: true}});
@@ -43,9 +40,13 @@ bot.on('message',(msg: any)=>
 		bot.on("polling_error",(err:any)=> console.log(err));
 		bot.sendMessage(msg.chat.id,text2)
 	}
-	else if (msg.text.toString().indexOf(msg) === 0)
-	{//элемент повторения
-		bot.sendMessage(msg.chat.id,msg.text.toString())
+	else 
+	{//элемент записи в файл
+		bot.on("polling_error",(err: any)=> console.log(err));
+
+		
+		WriteTxtfromFile(txtfilename1,msg.text)
+		bot.sendMessage(msg.chat.id," Сообщение сохранено на сервер");
 	}
 	
 });

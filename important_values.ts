@@ -1,7 +1,7 @@
-const txtfilename1 = "text1.txt";
-const txtfilename2 = "text2.txt";
+export const txtfilename1 = "text1.txt";
+export const txtfilename2 = "text2.txt";
 
-const commands = [
+export const commands = [
     {
 	    command: "/start",
 	    description: "Запуск бота"
@@ -10,13 +10,11 @@ const commands = [
 	    command: "/menu",
 	    description: "меню"
 	},
-    ]
+
+]
 
 
 
-
-
-export default txtfilename1; txtfilename2; commands;
 
 
 
