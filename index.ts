@@ -1,7 +1,16 @@
 const TelegramBot = require('node-telegram-bot-api');
 
+import dotenv from "dotenv";
+dotenv.config({path:"./s"});
+
+console.log(process.env);
+console.log(process.env.TOKEN);//выводит underfined
+
+
+const token = process.env.TOKEN;
+
 //импорт токена из файла, который нельзя выгружать
-import token from "./token_info";
+//import token from "./token_info";
 //импорт фуекции чтения из файла
 import {ReadTxtFromFile, WriteTxtfromFile} from "./functions";
 //импорт названия файла и команд боту из файла с основными константами
