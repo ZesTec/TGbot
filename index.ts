@@ -1,12 +1,12 @@
 const TelegramBot = require('node-telegram-bot-api');
 
 import dotenv from "dotenv";
-dotenv.config({path:"./s"});
+dotenv.config();
 
 console.log(process.env);
 console.log(process.env.TOKEN);//выводит underfined
 
-
+ 
 const token = process.env.TOKEN;
 
 //импорт токена из файла, который нельзя выгружать
