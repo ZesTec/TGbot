@@ -3,8 +3,8 @@ const TelegramBot = require('node-telegram-bot-api');
 import dotenv from "dotenv";
 dotenv.config();
 
-console.log(process.env);
-console.log(process.env.TOKEN);//выводит underfined
+//console.log(process.env);
+//console.log(process.env.TOKEN);//выводит underfined
 
  
 const token = process.env.TOKEN;
@@ -20,9 +20,6 @@ import {txtfilename1,txtfilename2, commands } from "./important_values";
 const bot = new TelegramBot(token, {polling: {interval:300, autoStart: true}});
 
 bot.setMyCommands(commands);
-
-let text1 = ReadTxtFromFile(txtfilename1);
-let text2 = ReadTxtFromFile(txtfilename2);
 
 bot.on('message',(msg: any)=> 
 {		
@@ -42,12 +39,12 @@ bot.on('message',(msg: any)=>
 	else if (msg.text == "Вариант 1")
 	{
 		bot.on("polling_error",(err: any)=> console.log(err));
-		bot.sendMessage(msg.chat.id,text1)
+		bot.sendMessage(msg.chat.id,ReadTxtFromFile(txtfilename1))
 	}
 	else if (msg.text == "Вариант 2")
 	{
 		bot.on("polling_error",(err:any)=> console.log(err));
-		bot.sendMessage(msg.chat.id,text2)
+		bot.sendMessage(msg.chat.id,ReadTxtFromFile(txtfilename2))
 	}
 	else 
 	{//элемент записи в файл
