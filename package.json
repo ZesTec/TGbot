@@ -3,7 +3,13 @@
   "dependencies": {
 	
   	
+  "@types/node-telegram-bot-api": "^0.61.7",
+	
+  	
   "dotenv": "^16.3.1",
+	
+  	
+  "mongodb": "^5.7.0",
 	
   	
   "node-telegram-bot-api": "^0.61.0",
